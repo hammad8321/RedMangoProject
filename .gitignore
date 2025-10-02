@@ -1,0 +1,27 @@
+# Visual Studio cache
+.vs/
+*.vsidx
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Others
+*.tmp
+*.cache
+*.config
+
