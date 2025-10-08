@@ -1,23 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MangoFusion_API.Models
+namespace MangoFusion_API.Models.Dto
 {
-    public class MenuItem
+    public class MenuItemCreateDTO 
     {
-        [Key]
-        public int Id { get; set; }
+
         [Required]
 
         public string Name { get; set; } = string.Empty;
         public string? Description { get; set; } 
-        public string Category { get; set; } = string.Empty;        
+        public string Category { get; set; } = string.Empty;
         public string? SpecialTag { get; set; } 
 
-        [Range(1,1000)]
+        [Range(1, 1000)]
         public double Price { get; set; }
 
-        public string? Image { get; set; }  // ✅ m
 
 
+        public IFormFile? File { get; set; } 
     }
 }

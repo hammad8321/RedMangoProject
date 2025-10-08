@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MangoFusion_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251003015257_AddMenuItemToDB")]
-    partial class AddMenuItemToDB
+    [Migration("20251008033349_UpdateSeedMenuItem")]
+    partial class UpdateSeedMenuItem
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,11 +107,9 @@ namespace MangoFusion_API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -121,12 +119,114 @@ namespace MangoFusion_API.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("SpecialTag")
-                        .HasColumnType("int");
+                    b.Property<string>("SpecialTag")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("MenuItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Category = "Appetizer",
+                            Description = "Fusc tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            Image = "images/spring_roll.jpg",
+                            Name = "Spring Roll",
+                            Price = 7.9900000000000002,
+                            SpecialTag = ""
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Category = "Appetizer",
+                            Description = "Fusc tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            Image = "images/idli.jpg",
+                            Name = "Idli",
+                            Price = 8.9900000000000002,
+                            SpecialTag = ""
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Category = "Appetizer",
+                            Description = "Fusc tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            Image = "images/pani_puri.jpg",
+                            Name = "Panu Puri",
+                            Price = 8.9900000000000002,
+                            SpecialTag = "Best Seller"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Category = "Entrée",
+                            Description = "Fusc tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            Image = "images/hakka_noodles.jpg",
+                            Name = "Hakka Noodles",
+                            Price = 10.99,
+                            SpecialTag = ""
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Category = "Entrée",
+                            Description = "Fusc tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            Image = "images/malai_kofta.jpg",
+                            Name = "Malai Kofta",
+                            Price = 12.99,
+                            SpecialTag = "Top Rated"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Category = "Entrée",
+                            Description = "Fusc tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            Image = "images/paneer_pizza.jpg",
+                            Name = "Paneer Pizza",
+                            Price = 11.99,
+                            SpecialTag = ""
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Category = "Entrée",
+                            Description = "Fusc tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            Image = "images/paneer_tikka.jpg",
+                            Name = "Paneer Tikka",
+                            Price = 13.99,
+                            SpecialTag = "Chef's Special"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Category = "Dessert",
+                            Description = "Fusc tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            Image = "images/carrot_love.jpg",
+                            Name = "Carrot Love",
+                            Price = 4.9900000000000002,
+                            SpecialTag = ""
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Category = "Dessert",
+                            Description = "Fusc tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            Image = "images/rasmalai.jpg",
+                            Name = "Rasmalai",
+                            Price = 4.9900000000000002,
+                            SpecialTag = "Chef's Special"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Category = "Dessert",
+                            Description = "Fusc tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            Image = "images/sweet_rolls.jpg",
+                            Name = "Sweet Rolls",
+                            Price = 3.9900000000000002,
+                            SpecialTag = "Top Rated"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
