@@ -22,7 +22,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 builder.Services.AddControllers();
 
-var key = builder.Configuration.GetValue<string>("ApiSetting:ScretKey");  // "ApiSetting": //"ScretKey":
+var key = builder.Configuration.GetValue<string>("ApiSetting:SecretKey");  // "ApiSetting": //"ScretKey":
 
 
 builder.Services.AddAuthentication(x =>
@@ -108,3 +108,6 @@ internal sealed class BererSecuritySchemeTranformer (Microsoft.AspNetCore.Authen
 
     }
 }
+
+
+//V218

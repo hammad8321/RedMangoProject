@@ -11,6 +11,9 @@ namespace MangoFusion_API.Data
         {
         }
         public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<OrderHeader> OrderHeader { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder builder)
