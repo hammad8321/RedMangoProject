@@ -25,6 +25,8 @@ namespace MangoFusion_API.Models
         [Required]
         public double Price { get; set; } // price of the item ordered (denormalized for convenience)
 
+        public int? Rating { get; set; } = null;// rating given by the user for this item in this order detail (1-5 stars)
+
 
     }
 }

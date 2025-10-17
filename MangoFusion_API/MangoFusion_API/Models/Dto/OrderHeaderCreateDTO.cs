@@ -24,7 +24,7 @@ namespace MangoFusion_API.Models.Dto
         public Double OrderTotal { get; set; } // total amount of the order 
 
 
-        public string OrderStatus { get; set; } = string.Empty; // status of the order (e.g. pending, completed, cancelled)
+       // public string OrderStatus { get; set; } = string.Empty; // status of the order (e.g. pending, completed, cancelled)
 
 
         public int TotalItems { get; set; } // total number of items in the order

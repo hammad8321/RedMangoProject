@@ -23,7 +23,7 @@ namespace MangoFusion_API.Models
 
         public string ApplicationUserId { get; set; } = string.Empty; // foreign key to the user who placed the order
         [ForeignKey("ApplicationUserId")]
-        public ApplicationUser ApplicationUser { get; set; } = new(); // navigation property to the user who placed the order   
+        public ApplicationUser? ApplicationUser { get; set; }  // navigation property to the user who placed the order   
 
 
         public Double OrderTotal { get; set; } // total amount of the order 

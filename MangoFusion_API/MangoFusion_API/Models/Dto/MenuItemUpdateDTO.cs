@@ -4,7 +4,7 @@ namespace MangoFusion_API.Models.Dto
 {
     public class MenuItemUpdateDTO
     {
-        [Key]
+        [Required]
         public int Id { get; set; }
         [Required]
 
