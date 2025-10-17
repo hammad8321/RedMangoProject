@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using System.Net;
+using System.Security.Cryptography;
 
 namespace MangoFusion_API.Controllers
 {
@@ -32,7 +33,22 @@ namespace MangoFusion_API.Controllers
         [HttpGet]
         public IActionResult GetMenuItems()
         {
-            _response.Result = _db.MenuItems.ToList();
+            List<MenuItem> menuItems = _db.MenuItems.ToList();
+
+            List<OrderDetail> orderDetailsWithRating = _db.OrderDetail.Where(od => od.Rating != null).ToList();
+
+            foreach(var menuItem in menuItems)
+            {
+                var ratingsForItem = orderDetailsWithRating.Where(od => od.MenuItemId == menuItem.Id).Select(od => od.Rating.Value);
+                double avgRating = ratingsForItem.Any() ? ratingsForItem.Average() : 0;
+                menuItem.Rating = avgRating;
+
+               
+            }
+
+
+
+            _response.Result = menuItems;
             _response.StatusCode = HttpStatusCode.OK;
             return Ok(_response);
 
@@ -49,6 +65,18 @@ namespace MangoFusion_API.Controllers
                 return BadRequest(_response);
             }
             MenuItem? menuItem = _db.MenuItems.FirstOrDefault(u => u.Id == id);
+
+            List<OrderDetail> orderDetailsWithRating = _db.OrderDetail.Where(od => od.Rating != null  && od.MenuItemId==menuItem.Id).ToList();
+
+            
+            
+                var ratingsForItem = orderDetailsWithRating.Select(od => od.Rating.Value);
+                double avgRating = ratingsForItem.Any() ? ratingsForItem.Average() : 0;
+                menuItem.Rating = avgRating;
+
+
+            
+
             _response.Result = menuItem;
             _response.StatusCode = HttpStatusCode.OK;
             return Ok(_response);
@@ -263,7 +291,7 @@ namespace MangoFusion_API.Controllers
                         {
                             var oldFilePath = Path.Combine(_env.WebRootPath, menuItemFromDb.Image);
                             if (System.IO.File.Exists(oldFilePath))
-                            { 
+                            {
                                 System.IO.File.Delete(oldFilePath);
                             }
                         }
@@ -280,7 +308,8 @@ namespace MangoFusion_API.Controllers
                         //_response.ErrorMessage.Add("Image file is required.");
                         //_response.StatusCode = HttpStatusCode.BadRequest;
                         //return BadRequest(_response);
-                    }else
+                    }
+                    else
                     {
                         // If no new file is provided, retain the existing image path
                         //  menuItemFromDb.Image = menuItemFromDb.Image;

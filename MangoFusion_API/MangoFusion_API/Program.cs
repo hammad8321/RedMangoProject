@@ -68,6 +68,17 @@ app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 
+// 2. Use CORS policy to enable API access from React/Vite app
+app.UseCors(policy =>
+  //  policy.WithOrigins("http://localhost:3000") // <-- your React/Vite origin
+  policy.AllowAnyOrigin()
+          .AllowAnyHeader()
+          .AllowAnyMethod()
+          .WithExposedHeaders("*")
+);
+// 2. Use CORS
+//app.UseCors("AllowLocalhost3000");
+
 app.UseAuthentication();  // this should be before authorization
 app.UseAuthorization();
 

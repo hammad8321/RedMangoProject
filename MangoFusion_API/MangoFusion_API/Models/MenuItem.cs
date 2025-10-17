@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MangoFusion_API.Models
 {
@@ -17,6 +18,11 @@ namespace MangoFusion_API.Models
         public double Price { get; set; }
 
         public string? Image { get; set; }  // ✅ m
+
+        [NotMapped]
+        public double Rating { get; set; } // ✅ m
+
+
 
 
     }
